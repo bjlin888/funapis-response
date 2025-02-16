@@ -123,8 +123,3 @@ For support, please:
 ## Authors
 
 - **B.J. Lin** - *Initial work* - [bjlin888](https://github.com/bjlin888)
-
-## Acknowledgments
-
-- Thanks to the FunRaise team for the error code specification
-- Inspired by best practices in API response handling
