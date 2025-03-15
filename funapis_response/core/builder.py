@@ -1,7 +1,7 @@
 """Builder implementations for response payload classes."""
 
 from datetime import datetime
-from typing import List, Optional, Any
+from typing import List, Optional, Any, Dict
 from uuid import UUID, uuid4
 from zoneinfo import ZoneInfo
 
@@ -321,6 +321,66 @@ class ResponsePayloadBuilder:
         self._stack_trace = stack_trace
         return self
 
+    def with_error(self, error_code, **message_params) -> 'ResponsePayloadBuilder':
+        """
+        使用錯誤碼和訊息參數設置錯誤信息
+        
+        Args:
+            error_code: ErrorCode 實例
+            **message_params: 用於格式化錯誤訊息的參數
+            
+        Returns:
+            Self for method chaining
+        """
+        self._error_code = error_code.code
+        self._error_desc = error_code.get_message(**message_params)
+        return self
+    
+    @classmethod
+    def from_exception(cls, exception) -> 'ResponsePayloadBuilder':
+        """
+        從例外創建響應構建器
+        
+        Args:
+            exception: FunAPIException 實例
+            
+        Returns:
+            ResponsePayloadBuilder 實例
+        """
+        builder = cls()
+        builder.with_error_code(exception.error_code.code)
+        builder.with_error_desc(exception.message)
+        
+        if exception.data:
+            builder.with_data(exception.data)
+        
+        if exception.stack_trace:
+            builder.with_stack_trace(exception.stack_trace)
+        
+        return builder
+    
+    @classmethod
+    def success(cls, data: Optional[Any] = None) -> 'ResponsePayloadBuilder':
+        """
+        創建成功響應構建器
+        
+        Args:
+            data: 響應數據
+            
+        Returns:
+            ResponsePayloadBuilder 實例
+        """
+        # Import here to avoid circular imports
+        from funapis_response.error_codes.common import CommonErrorCodes
+        
+        builder = cls()
+        builder.with_error(CommonErrorCodes.SUCCESS)
+        
+        if data:
+            builder.with_data(data)
+        
+        return builder
+    
     def build(self) -> ResponsePayload:
         """
         Build the ResponsePayload instance.
