@@ -35,7 +35,7 @@ dev_requires = [
 setup(
     # Basic package information
     name="funapis-response",
-    version="0.1.0",
+    version="0.1.1",
     author="B.J. Lin",
     author_email="bjlin@gmail.com",
     description="A standardized API response payload library for FUN-prefixed error codes",

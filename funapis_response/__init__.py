@@ -16,6 +16,15 @@ from funapis_response.core.builder import (
     OrderingPayloadBuilder,
 )
 from funapis_response.enums.types import ErrorSeverity, SortDirection, UserLevel
+from funapis_response.error_codes import ErrorCode, CommonErrorCodes, ErrorCodeRegistry
+from funapis_response.exceptions import (
+    FunAPIException,
+    ValidationError,
+    APIError,
+    NetworkError,
+    IllegalOperationError,
+    UnknownError
+)
 
 __version__ = "0.1.0"
 __all__ = [
@@ -29,4 +38,13 @@ __all__ = [
     "SortDirection",
     "UserLevel",
     "PayloadValidator",
+    "ErrorCode",
+    "CommonErrorCodes",
+    "ErrorCodeRegistry",
+    "FunAPIException",
+    "ValidationError",
+    "APIError",
+    "NetworkError",
+    "IllegalOperationError",
+    "UnknownError",
 ]
