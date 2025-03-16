@@ -8,7 +8,8 @@ from funapis_response import (
     ValidationError,
     APIError,
     ErrorCode,
-    ErrorSeverity
+    ErrorSeverity,
+    EntityNotFoundError
 )
 
 # 1. 基本使用 - 成功響應
@@ -98,6 +99,17 @@ def custom_exception():
         print(f"錯誤碼: {response.error_code}")
         print(f"錯誤描述: {response.error_desc}")
         print()
+        
+def entity_not_found_error():
+    try:
+        raise EntityNotFoundError(entity_id="wrong_id")
+    except EntityNotFoundError as e:
+        response = e.to_response_payload()
+        
+        print("自定義例外響應:")
+        print(f"錯誤碼: {response.error_code}")
+        print(f"錯誤描述: {response.error_desc}")
+        print()
 
 
 if __name__ == "__main__":
@@ -107,3 +119,4 @@ if __name__ == "__main__":
     exception_handling()
     custom_error_codes()
     custom_exception()
+    entity_not_found_error()

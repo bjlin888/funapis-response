@@ -23,6 +23,23 @@ class ValidationError(FunAPIException):
             data=data,
             stack_trace=stack_trace
         )
+        
+class EntityNotFoundError(FunAPIException):
+    """參數驗證錯誤"""
+    
+    def __init__(
+        self,
+        entity_id: str,
+        data: Optional[Any] = None,
+        include_trace: bool = False
+    ):
+        stack_trace = traceback.format_exc() if include_trace else None
+        super().__init__(
+            error_code=CommonErrorCodes.ENTITY_NOT_FOUND_ERROR,
+            message_params={"entity_id": entity_id},
+            data=data,
+            stack_trace=stack_trace
+        )        
 
 
 class APIError(FunAPIException):

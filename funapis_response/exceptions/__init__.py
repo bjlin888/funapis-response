@@ -6,7 +6,8 @@ from funapis_response.exceptions.api_exceptions import (
     APIError,
     NetworkError,
     IllegalOperationError,
-    UnknownError
+    UnknownError,
+    EntityNotFoundError
 )
 
 __all__ = [
@@ -15,5 +16,6 @@ __all__ = [
     "APIError",
     "NetworkError",
     "IllegalOperationError",
-    "UnknownError"
+    "UnknownError",
+    "EntityNotFoundError"
 ]

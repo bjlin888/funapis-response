@@ -23,7 +23,8 @@ from funapis_response.exceptions import (
     APIError,
     NetworkError,
     IllegalOperationError,
-    UnknownError
+    UnknownError,
+    EntityNotFoundError
 )
 
 __version__ = "0.1.0"
@@ -47,4 +48,5 @@ __all__ = [
     "NetworkError",
     "IllegalOperationError",
     "UnknownError",
+    "EntityNotFoundError"
 ]

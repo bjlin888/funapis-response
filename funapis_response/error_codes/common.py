@@ -14,6 +14,13 @@ class CommonErrorCodes:
         message_template="操作成功"
     )
     
+    # Entity Not Error
+    ENTITY_NOT_FOUND_ERROR = ErrorCode(
+        code="FUN999800001",
+        severity=ErrorSeverity.WARNING,
+        message_template="找不到指定的資料列：{entity_id}"
+    )    
+    
     # 參數驗證錯誤
     VALIDATION_ERROR = ErrorCode(
         code="FUN999999993",
