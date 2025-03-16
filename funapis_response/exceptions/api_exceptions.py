@@ -29,14 +29,15 @@ class EntityNotFoundError(FunAPIException):
     
     def __init__(
         self,
-        entity_id: str,
+        identifier: str,
+        entity_name: str,
         data: Optional[Any] = None,
         include_trace: bool = False
     ):
         stack_trace = traceback.format_exc() if include_trace else None
         super().__init__(
             error_code=CommonErrorCodes.ENTITY_NOT_FOUND_ERROR,
-            message_params={"entity_id": entity_id},
+            message_params={"entity_name": {entity_name}, "identifier": identifier},
             data=data,
             stack_trace=stack_trace
         )        

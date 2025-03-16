@@ -102,7 +102,7 @@ def custom_exception():
         
 def entity_not_found_error():
     try:
-        raise EntityNotFoundError(entity_id="wrong_id")
+        raise EntityNotFoundError(entity_name="MyEntity", identifier="wrong_id")
     except EntityNotFoundError as e:
         response = e.to_response_payload()
         
