@@ -17,13 +17,13 @@ from funapis_response.core.builder import (
 )
 from funapis_response.enums.types import ErrorSeverity, SortDirection, UserLevel
 from funapis_response.error_codes import ErrorCode, CommonErrorCodes, ErrorCodeRegistry
-from funapis_response.exceptions import (
-    FunAPIException,
-    ValidationError,
-    APIError,
-    NetworkError,
-    IllegalOperationError,
-    UnknownError,
+from funapis_response.exceptions.api_exceptions import (
+    FunAPIException, 
+    ValidationError, 
+    APIError, 
+    NetworkError, 
+    IllegalOperationError, 
+    UnknownError, 
     EntityNotFoundError
 )
 
